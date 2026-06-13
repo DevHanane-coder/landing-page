@@ -1,178 +1,279 @@
 *{
-  padding: 0;
-  margin: 0;
-  font-family: sans-serif;
-  box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
-/* BACKGROUND */
 body{
-  background: linear-gradient(#111, #222);
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 20px;
+    min-height:100vh;
+    background:#0f0f11;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    overflow-x:hidden;
+    position:relative;
 }
 
-/* BACKGROUND SHAPE */
-body::after{
-  content: '';
-  width: 100%;
-  height: 100%;
-  background: blueviolet;
-  position: absolute;
-  z-index: -1;
-  clip-path: circle(40% at right 70%);
+body::before{
+    content:"";
+    position:absolute;
+    width:700px;
+    height:700px;
+    background:linear-gradient(135deg,#7c3aed,#a855f7);
+    border-radius:50%;
+    right:-250px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:-1;
 }
 
-/* MAIN CONTAINER */
 .container{
-  width: 80%;
-  min-height: 80vh;
-  background: rgba(255,255,255,0.1);
-  border-radius: 20px;
-  overflow: hidden;
-  padding-bottom: 20px;
+    width:85%;
+    max-width:1400px;
+    min-height:80vh;
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:25px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.5);
+
+    overflow:hidden;
 }
 
 /* NAVBAR */
+
 nav{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  margin: auto;
-  padding: 20px 0;
+    width:90%;
+    margin:auto;
+    padding:30px 0;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-nav .logo{
-  color: #fff;
-  text-decoration: none;
-  font-size: 32px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-weight: 700;
+.logo{
+    text-decoration:none;
+    color:white;
+    font-size:34px;
+    font-weight:800;
+    letter-spacing:4px;
+}
+
+.logo span{
+    color:#a855f7;
 }
 
 nav ul{
-  list-style: none;
+    list-style:none;
 }
 
 nav ul li{
-  display: inline-block;
-  margin: 0 10px;
+    display:inline-block;
+    margin-left:25px;
 }
 
 nav ul li a{
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  transition: 0.3s;
+    color:white;
+    text-decoration:none;
+    position:relative;
+    transition:.3s;
 }
 
-nav ul li a:hover{
-  color: #e80202;
+nav ul li a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0;
+    height:2px;
+    background:#a855f7;
+    transition:.3s;
+}
+
+nav ul li a:hover::after{
+    width:100%;
 }
 
 /* CONTENT */
+
 .content{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  margin: auto;
-  margin-top: 40px;
+    width:90%;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    min-height:65vh;
 }
 
-.content .text{
-  color: #fff;
-  width: 45%;
+.text{
+    width:50%;
+    color:white;
 }
 
-.content .text h2{
-  font-size: 42px;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 2px;
+.tag{
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    background:rgba(168,85,247,.15);
+
+    border:1px solid rgba(168,85,247,.3);
+
+    color:#d8b4fe;
+
+    margin-bottom:20px;
+
+    font-size:14px;
 }
 
-.content .text p{
-  font-size: 18px;
-  line-height: 28px;
-  margin-top: 15px;
-  letter-spacing: 1px;
-  color: #ddd;
+.text h2{
+    font-size:clamp(2.2rem, 5vw, 4rem);
+    line-height:1.2;
+    margin-bottom:20px;
 }
 
-.content .image{
-  width: 45%;
+.text p{
+    color:#d1d5db;
+    line-height:1.8;
+    font-size:18px;
+    max-width:550px;
 }
 
-.content .image img{
-  width: 100%;
-  max-width: 400px;
+.buttons{
+    margin-top:30px;
+    display:flex;
+    gap:15px;
 }
 
-/* ========================= */
-/* 📱 RESPONSIVE MOBILE FIX */
-/* ========================= */
+.btn{
+    text-decoration:none;
+    color:white;
 
-@media (max-width: 768px){
+    background:#a855f7;
 
-  body{
-    align-items: flex-start;
-  }
+    padding:15px 35px;
 
-  .container{
-    width: 95%;
-    height: auto;
-  }
+    border-radius:50px;
 
-  nav{
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-  }
+    font-weight:600;
 
-  nav ul li{
-    display: block;
-    margin: 10px 0;
-  }
-
-  .content{
-    flex-direction: column;
-    text-align: center;
-    gap: 30px;
-  }
-
-  .content .text{
-    width: 100%;
-  }
-
-  .content .text h2{
-    font-size: 28px;
-  }
-
-  .content .text p{
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .content .image{
-    width: 100%;
-  }
-
-  .content .image img{
-    width: 75%;
-  }
-
-  body::after{
-    clip-path: circle(60% at bottom);
-  }
+    transition:.3s;
 }
 
+.btn:hover{
+    transform:translateY(-4px);
 
+    box-shadow:0 10px 30px rgba(168,85,247,.5);
+}
+
+.btn-outline{
+    text-decoration:none;
+    color:white;
+
+    padding:15px 35px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(255,255,255,.3);
+
+    transition:.3s;
+}
+
+.btn-outline:hover{
+    background:rgba(255,255,255,.1);
+}
+
+/* IMAGE */
+
+.image{
+    width:45%;
+    text-align:center;
+}
+
+.image img{
+    width:100%;
+    max-width:520px;
+
+    filter:drop-shadow(0 20px 25px rgba(0,0,0,.4));
+
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-18px);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    body::before{
+        width:450px;
+        height:450px;
+        right:-250px;
+    }
+
+    .container{
+        width:100%;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav ul li{
+        display:block;
+        margin:12px 0;
+        text-align:center;
+    }
+
+    .content{
+        flex-direction:column-reverse;
+        text-align:center;
+        gap:40px;
+        padding-bottom:40px;
+    }
+
+    .text,
+    .image{
+        width:100%;
+    }
+
+    .text p{
+        max-width:100%;
+        font-size:16px;
+    }
+
+    .buttons{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .image img{
+        width:75%;
+        max-width:320px;
+    }
+}
